@@ -1,0 +1,19 @@
+- name: Setup ufw
+  ufw:
+    state: enabled
+    policy: deny
+- name: Allow ssh connections with ufw
+  ufw:
+    rule: limit
+    port: '22'
+    proto: tcp
+- name: Allow web traffic (http)
+  ufw:
+    rule: allow
+    port: '80'
+    proto: tcp
+- name: Allow web traffic (https)
+  ufw:
+    rule: allow
+    port: '443'
+    proto: tcp 

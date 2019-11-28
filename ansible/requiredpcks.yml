@@ -1,0 +1,65 @@
+---
+- hosts: host2
+  become: true
+  tasks:
+  - name: Update repositories cache
+    apt:
+      update_cache: yes
+  - name: install nginx
+    apt: 
+      name: nginx 
+      state: latest
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
+  - name: Set MySQL root password before installing
+    debconf: 
+      name: mysql-server 
+      question: mysql-server/root_password 
+      value: root 
+      vtype: password
+  - name: Confirm MySQL root password before installing
+    debconf: 
+      name: mysql-server 
+      question: mysql-server/root_password_again 
+      value: root 
+      vtype: password
+  - name: Install common packages
+    apt:
+      pkg:
+      - python3-pip
+      - python-pip
+      - mysql-server
+      - libmysqlclient-dev
+      - python-flask
+      - git
+      - ufw  
+      state: latest
+  - pip:
+      name: virtualenv
+      executable: pip3
+  - pip:
+      name: flask
+      executable: pip3
+  - pip:
+      name: flask-mysql
+      executable: pip
+  - pip:
+      name: cryptography
+      executable: pip
+  - pip:
+      name: wheel
+      executable: pip3
+  - pip:
+      name: flask-mysql
+      executable: pip3
+  - pip:
+      name: gunicorn
+      executable: pip3
+  - include: database.yml
+  - include: git.yml
+  - include: nginx-gunicorn.yml
+  - include: ufw.yml
+  - include: certbot.yml
+      

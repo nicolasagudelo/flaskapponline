@@ -1,0 +1,17 @@
+---
+- hosts: host1
+  become: true
+  vars:
+    ubuntu_required_packages:
+      - python3-pip
+      - mysql-server
+      - python-flask
+    pip_required_libraries:
+      - virtualenv
+      - flask-mysql
+      - flask-mysqldb
+      - gunicorn
+  tasks:
+    - include: test.yml
+
+
