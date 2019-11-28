@@ -1,0 +1,15 @@
+[Unit]
+Description=gunicorn daemon for /var/www/html/mywebapp/myapp.py
+After=network.target
+
+[Service]
+User=nicolas
+Group=www-data
+RuntimeDirectory=gunicorn
+WorkingDirectory=/var/www/html/mywebapp/
+ExecStart=/usr/local/bin/gunicorn --bind=unix:/tmp/gunicorn.sock --workers=4 myapp:app
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target

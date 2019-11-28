@@ -1,0 +1,32 @@
+- name: copy nginx conf file
+  copy: 
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+- name: copy the nginx directives for the app
+  copy:
+    src: myflaskapp
+    dest: /etc/nginx/sites-available/myflaskapp
+- name: Change working folder to sites-enabled then remove the default file
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+- name: Create the symbolic link
+  file:
+    src: /etc/nginx/sites-available/myflaskapp
+    dest: /etc/nginx/sites-enabled/myflaskapp
+    state: link    
+    force: yes
+- name: Reload nginx
+  service:
+    name: nginx
+    state: restarted
+- name: Create a Gunicorn systemd service file
+  copy:
+    src: gunicorn.service
+    dest: /etc/systemd/system/gunicorn.service
+- name: Enable the Gunicorn service
+  shell:
+    cmd: systemctl enable gunicorn
+- name: Start the Gunicorn service
+  shell:
+    cmd: systemctl start gunicorn

@@ -1,0 +1,14 @@
+
+- name: add certbot repository
+  apt_repository:
+    repo: ppa:certbot/certbot
+- name: Update cache
+  apt:
+    update_cache: yes
+- name: Install certbot
+  apt: 
+    pkg: python-certbot-nginx 
+    state: latest
+- name: Get and Install the certificate
+  shell:
+    cmd: certbot --nginx -n --agree-tos --email nicolas.agudeloh@gmail.com -d www.ormucotest.tk -d ormucotest.tk

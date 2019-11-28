@@ -1,0 +1,17 @@
+- name: copy database dump file
+  copy: 
+    src: flaskapp.sql
+    dest: /tmp
+- name: Create database
+  mysql_db:
+    login_user: root
+    login_password: root
+    name: flaskapp
+    state: present
+- name: Restore database
+  mysql_db:
+    login_user: root
+    login_password: root
+    state: import
+    name: all
+    target: /tmp/flaskapp.sql

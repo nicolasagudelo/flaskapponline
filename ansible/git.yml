@@ -1,0 +1,4 @@
+- name: Pull the app files from github
+  git:
+    repo: 'https://github.com/nicolasagudelo/flaskapponline.git'
+    dest: /var/www/html/mywebapp
