@@ -4,7 +4,7 @@ server {
 
 	root /var/www/html/mywebapp;
 
-	server_name .ormucotest.tk;
+	server_name example.com;
 
 	location /static {
 	    alias /var/www/html/mywebapp/static;
