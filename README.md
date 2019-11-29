@@ -16,7 +16,7 @@ Deployment of a Flask application using Ansible playbooks with Ubuntu 18.04
 
 ## Getting Started
 
-**Keep in mind the following instructions are for systems with Ubuntu 18.04 and may be different for different Linux distributions**
+**Keep in mind the following instructions are for systems with Ubuntu 18.04 and may vary for different Linux distributions**
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
