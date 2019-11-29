@@ -1,0 +1,17 @@
+---
+- hosts: host1                                                #First we specify the host or hosts where we want to execute our playbook
+  become: true                                                #This option tells the playbook to execute all the commands as a sudo user
+  tasks:                                                      #We define the tasks to do on the workstation host
+  - name: Update repositories cache                           #With this task we update the apt cache is the equivalent to execute the 'apt update' command on the terminal
+    apt:
+      update_cache: yes
+  - include: nginx.yml                                        #Playbook related to ngninx installation and setup
+  - include: mysqlconf.yml                                    #Playbook related to the configuration needed before installing mysql-server
+  - include: aptinstall.yml                                   #Playbook related to the installation of the packages needed for the app (using apt install)
+  - include: pip.yml                                          #Playbook related to the installation of the packages needed for the app (using pip and pip3)
+  - include: database.yml                                     #Playbook related to the creation of the database that will be used by the app
+  - include: git.yml                                          #Playbook related to the retreival of the app files from github
+  - include: nginx-gunicorn.yml                               #Playbook related to the configuration of nginx and gunicorn
+  - include: ufw.yml                                          #Playbook related to the configuration of the rules for the firewall using ufw
+  - include: certbot.yml                                      #Playbook related to the acquisition and installation of the ssl certificate for the website.
+      

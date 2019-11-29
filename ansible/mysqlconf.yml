@@ -1,0 +1,12 @@
+- name: Set MySQL root password before installing           #We set the root password which will be prompted when we proceed to install mysql-server, we define the password under value parameter.
+  debconf: 
+    name: mysql-server 
+    question: mysql-server/root_password 
+    value: root 
+    vtype: password
+- name: Confirm MySQL root password before installing       #We confirm the password as we will be prompted for this once we proceed to install mysql-server
+  debconf: 
+    name: mysql-server 
+    question: mysql-server/root_password_again 
+    value: root 
+    vtype: password
