@@ -1,0 +1,18 @@
+- pip:                                                      #Installs virtualenv package which is a tool to create isolated Python environments
+    name: virtualenv
+    executable: pip3
+- pip:                                                      #Installs Flask which is the framework we are going to use to build the web app
+    name: flask
+    executable: pip3
+- pip:
+    name: flask-mysql                                       #Installs flask-mysql extension which will be used to create the configuration to connect to the database and the connection to the database (python 2.x)
+    executable: pip
+- pip:                                                      #Wheel is a built-package format, and offers the advantage of not recompiling your software during every install
+    name: wheel
+    executable: pip3
+- pip:
+    name: flask-mysql                                       #Installs flask-mysql extension which will be used to create the configuration to connect to the database and the connection to the database (python 3.x)
+    executable: pip3
+- pip:
+    name: gunicorn                                          #Installs gunicorn a Python WSGI HTTP Server for UNIX
+    executable: pip3

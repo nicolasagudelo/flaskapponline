@@ -1,0 +1,11 @@
+- name: Install common packages                             #Installs the required packages to be able to host and execute the app.
+  apt:
+    pkg:
+    - python3-pip                                           #Installs the python pip3 module required to install python 3.x related packages
+    - python-pip                                            #Installs the python pip module required to install python 2.x related packages
+    - mysql-server                                          #Installs mysql-server on the workstation host, we will need this as we are going to store the information using MySQL
+    - libmysqlclient-dev                                    #Installs MySQL database development files required for the database.
+    - python-flask                                          #Installs Flask which is the framework we are going to use to build the web app
+    - git                                                   #Installs git which will be used to retrieve the app source code and files from github
+    - ufw                                                   #Installs Uncomplicated firewall which will be used later to define rules to allow or deny connections on specific ports 
+    state: latest

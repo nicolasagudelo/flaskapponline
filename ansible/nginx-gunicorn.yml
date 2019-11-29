@@ -1,32 +1,32 @@
-- name: copy nginx conf file
+- name: copy nginx conf file                                                      #Copy the ngninx conf file from the pulled directory to the right path further information about the conf file can be found in the nginx.conf file
   copy: 
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
-- name: copy the nginx directives for the app
+- name: copy the nginx directives for the app                                     #Copy the directives for the app from pulled directory to the right path on the workstation host
   copy:
     src: myflaskapp
     dest: /etc/nginx/sites-available/myflaskapp
-- name: Change working folder to sites-enabled then remove the default file
+- name: Change working folder to sites-enabled then remove the default file       #Removes the default site on the sites-enabled directory which will not be needed
   file:
     path: /etc/nginx/sites-enabled/default
     state: absent
-- name: Create the symbolic link
+- name: Create the symbolic link                                                  #Creates the symbolic link between the files on sites-available directory and sites-enabled directory
   file:
     src: /etc/nginx/sites-available/myflaskapp
     dest: /etc/nginx/sites-enabled/myflaskapp
     state: link    
     force: yes
-- name: Reload nginx
+- name: Reload ngninx                                                             #Reloads nginx to udpate the changes made.
   service:
     name: nginx
     state: restarted
-- name: Create a Gunicorn systemd service file
+- name: Create a Gunicorn systemd service file                                    #We will use this file to automate the running of Gunicorn creating a service using the system and service manager
   copy:
     src: gunicorn.service
     dest: /etc/systemd/system/gunicorn.service
-- name: Enable the Gunicorn service
+- name: Enable the Gunicorn service                                               
   shell:
     cmd: systemctl enable gunicorn
-- name: Start the Gunicorn service
+- name: Start the Gunicorn service                                                
   shell:
     cmd: systemctl start gunicorn

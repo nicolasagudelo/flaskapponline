@@ -1,0 +1,8 @@
+- name: install nginx                                       #Then we proceed to install nginx which will serve as our HTTTP server
+  apt: 
+    name: nginx 
+    state: latest
+- name: start nginx                                         #We proceed to start the nginx service.
+  service:
+    name: nginx
+    state: started
