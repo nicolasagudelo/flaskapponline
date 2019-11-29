@@ -26,10 +26,10 @@ You can find a running version of this app [here](https://ormucotest.tk)
 
 ### Prerequisites
 
-* One Ansible control host, this is the machine you will use to connect and control the workstation hosts.
+* One Ansible control host: this is the machine you will use to connect and control the workstation hosts.
     * A non-root user with sudo privileges
     * An SSH keypair associated with this user.
-* One or more Ansible workstation hosts, this will be the machines that your control host will be, well, controlling. For more information on how to do this, you can check [How to Install and Configure Ansible on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04)
+* One or more Ansible workstation hosts: this will be the machines that your control host will be, well, controlling. For more information on how to do this, you can check [How to Install and Configure Ansible on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04)
     * Add the SSH keypair associated with your control host user to the __authorized keys__ directory of a system user on your workstation host. If you are not sure how to do this you can find a more detailed guide here: [How to set up SSH Keys on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804)
     * If you are using platforms such as  AWS's EC2 or  Google Cloud Platform Compute Engine to create virtual machines for your workstation hosts you may be able to add your ssh using these platforms. A guide on how to do that for Google Cloud Platform can be found [here](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#project-wide) for all your instances or [here](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#instance-only) for specific instances.
 
