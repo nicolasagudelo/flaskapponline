@@ -29,7 +29,7 @@ You can find a running version of this app [here](https://ormucotest.tk)
 * One Ansible control host: this is the machine you will use to connect and control the workstation hosts.
     * A non-root user with sudo privileges
     * An SSH keypair associated with this user.
-* One or more Ansible workstation hosts: this will be the machines that your control host will be, well, controlling. For more information on how to do this, you can check [How to Install and Configure Ansible on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04)
+* One or more Ansible workstation hosts: this will be the machines that your control host will be controlling. For more information on how to do this, you can check [How to Install and Configure Ansible on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04)
     * Add the SSH keypair associated with your control host user to the __authorized keys__ directory of a system user on your workstation host. If you are not sure how to do this you can find a more detailed guide here: [How to set up SSH Keys on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804)
     * If you are using platforms such as  AWS's EC2 or  Google Cloud Platform Compute Engine to create virtual machines for your workstation hosts you may be able to add your ssh using these platforms. A guide on how to do that for Google Cloud Platform can be found [here](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#project-wide) for all your instances or [here](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#instance-only) for specific instances.
 
@@ -38,7 +38,7 @@ You can find a running version of this app [here](https://ormucotest.tk)
 Once you've finished configuring ansible on your control host and can connect to your workstation host(s) using SSH you can proceed to deploy the application for this:
 
  1. Either clone or download the project files from this repository to your Ansible control host if you want you can take just the Ansible folder since it's the only one we are going to need to deploy the app.
- 2. Take the public IP(s) of your workstation host(s) and add them to your Ansible inventory on your control host, the default location of your inventory is __/etc/ansible/hosts__ use nano or any text editor you like to do so. Your inventory will look to something similar to this:
+ 2. Take the public IP(s) of your workstation host(s) and add them to your Ansible inventory on your control host, the default location of your inventory is __/etc/ansible/hosts__ use nano or any text editor you like to do so. Your inventory will look something similar to this:
 
 ```
 # Ex 1: Ungrouped hosts, specify before any group headers.
@@ -61,7 +61,7 @@ two.example.com
 three.example.com
 ```
 
-The heading in brackets are group names that you can use to classify your hosts and to control multiple hosts at the same time, it is not mandatory to use them but they help a lot.
+The heading in brackets are group names that you can use to classify your hosts and to control multiple hosts at the same time, it is not mandatory to use them but they are very useful.
 
 You can also add aliases to your hosts to control them individually just write them before your host's domain or IP address and add the ansible_host attribute:
 
