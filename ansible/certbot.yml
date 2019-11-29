@@ -11,7 +11,7 @@
     state: latest
 - name: Get and Install the certificate
   shell:
-    cmd: certbot --nginx -n --agree-tos --email youremail@domain.com -d www.your_domain.com -d your_domain.com      #-n flag is used for non interactive mode, meaning it will never ask the user for input
+    cmd: certbot --nginx -n --agree-tos --email youremail@domain.com -d www.your_domain.com -d your_domain.com        #-n flag is used for non interactive mode, meaning it will never ask the user for input
                                                                                                                       #--agree-tos flag is used to agree to the tos and is required when using -n 
                                                                                                                       #--email flag is required when using -n flag
                                                                                                                       #-d Refers to the domain to apply the ssl certificate can be used more than once for multiple domains 
