@@ -13,5 +13,5 @@
   - include: git.yml                                          #Playbook related to the retreival of the app files from github
   - include: nginx-gunicorn.yml                               #Playbook related to the configuration of nginx and gunicorn
   - include: ufw.yml                                          #Playbook related to the configuration of the rules for the firewall using ufw
-  - include: certbot.yml                                      #Playbook related to the acquisition and installation of the ssl certificate for the website.
+  #- include: certbot.yml                                      #Playbook related to the acquisition and installation of the ssl certificate for the website.
       
